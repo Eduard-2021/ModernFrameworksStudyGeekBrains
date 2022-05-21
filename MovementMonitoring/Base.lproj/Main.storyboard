@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Title-->
+        <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="MovementMonitoring" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,38 +17,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Azu-4H-nf6">
+                                <rect key="frame" x="72.5" y="830.5" width="269" height="31.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Отобразить предыдущий маршрут">
+                                            <attributes>
+                                                <font key="NSFont" size="15" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showPreviousRoute:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uub-wH-vRB"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pKF-UQ-ZsG" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="731"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Azu-4H-nf6" secondAttribute="bottom" id="GD7-7d-pgq"/>
+                            <constraint firstItem="Azu-4H-nf6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NpK-9k-SeV"/>
                             <constraint firstItem="pKF-UQ-ZsG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WbQ-7e-IfJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pKF-UQ-ZsG" secondAttribute="trailing" id="YGP-We-lCY"/>
                             <constraint firstItem="pKF-UQ-ZsG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aGz-sS-LoF"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pKF-UQ-ZsG" secondAttribute="bottom" id="d6F-po-Nds"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pKF-UQ-ZsG" secondAttribute="bottom" constant="43" id="d6F-po-Nds"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="WmL-6z-TwB">
-                        <barButtonItem key="leftBarButtonItem" title="Отслеживать" id="e6P-PU-crE">
+                    <navigationItem key="navigationItem" id="WmL-6z-TwB">
+                        <barButtonItem key="leftBarButtonItem" title="Начать новый трек" id="e6P-PU-crE">
                             <connections>
-                                <action selector="updateLocation:" destination="BYZ-38-t0r" id="Cby-GT-QIF"/>
+                                <action selector="startTrack:" destination="BYZ-38-t0r" id="JAH-Eg-lAz"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem title="Текущее" image="plus.magnifyingglass" catalog="system" id="Zg1-EE-E1k">
-                                <connections>
-                                    <action selector="zoomIn:" destination="BYZ-38-t0r" id="6qH-9h-QrV"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" image="minus.magnifyingglass" catalog="system" id="Qem-Km-mmM">
-                                <connections>
-                                    <action selector="zoomOut:" destination="BYZ-38-t0r" id="f0Y-C7-lgq"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Закончить трек" id="Zg1-EE-E1k">
+                            <connections>
+                                <action selector="stopTrack:" destination="BYZ-38-t0r" id="Y2k-nc-TKr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="pKF-UQ-ZsG" id="ED4-pP-f9l"/>
@@ -78,8 +90,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="minus.magnifyingglass" catalog="system" width="128" height="115"/>
-        <image name="plus.magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

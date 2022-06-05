@@ -8,5 +8,7 @@ target 'MovementMonitoring' do
   # Pods for MovementMonitoring
 
 	pod 'GoogleMaps'
+  pod 'RealmSwift'
+  pod 'Alamofire'
 
 end

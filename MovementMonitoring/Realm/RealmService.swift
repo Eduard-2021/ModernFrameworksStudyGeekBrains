@@ -34,12 +34,24 @@ class RealmService {
         return object
     }
     
+    
+    static func loadAndCheck<T:Object>(typeOf: T.Type, login: String) throws -> Results<T> {
+        print(Realm.Configuration().fileURL ?? "")
+        let realm = try Realm()
+        let object = realm.objects(T.self).filter("login == %@", login)
+        return object
+    }
+    
     static func delete<T:Object>(object: Results<T>) throws {
         let realm = try Realm()
         try realm.write {
             realm.delete(object)
         }
     }
+    
+    
+    
+    
 }
 
 

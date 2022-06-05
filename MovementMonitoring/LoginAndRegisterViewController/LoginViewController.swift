@@ -10,13 +10,14 @@ import UIKit
 class LoginViewController: UIViewController {
     
     var loginAndRegisterViewModel: LoginAndRegisterViewModel?
-//    var unCorrectLoginOrPassword: ((UIAlertController) -> Void)?
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+        loginTextField.autocorrectionType = .no
+        passwordTextField.isSecureTextEntry = true
         loginAndRegisterViewModel?.unCorrectLoginOrPassword = {alertController in
             self.present(alertController, animated: true)
         }

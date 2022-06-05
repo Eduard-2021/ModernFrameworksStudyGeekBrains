@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230C1332284CFD4C001D033E /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230C1331284CFD4C001D033E /* BackgroundViewController.swift */; };
 		2311CE5C2839235000F95335 /* MapAndLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2311CE5B2839235000F95335 /* MapAndLocationViewModel.swift */; };
 		231C67662847816D00AD6395 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231C67652847816D00AD6395 /* User.swift */; };
 		231C67692847841400AD6395 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231C67682847841400AD6395 /* LoginViewController.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		1825604B4DE6F03D3335DCAF /* Pods-MovementMonitoring.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovementMonitoring.release.xcconfig"; path = "Target Support Files/Pods-MovementMonitoring/Pods-MovementMonitoring.release.xcconfig"; sourceTree = "<group>"; };
+		230C1331284CFD4C001D033E /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
 		2311CE5B2839235000F95335 /* MapAndLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndLocationViewModel.swift; sourceTree = "<group>"; };
 		231C67652847816D00AD6395 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		231C67682847841400AD6395 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				231F00F727E62FF300502AFA /* AppDelegate.swift */,
 				231F00F927E62FF300502AFA /* SceneDelegate.swift */,
+				230C1331284CFD4C001D033E /* BackgroundViewController.swift */,
 				231F00FD27E62FF300502AFA /* Main.storyboard */,
 				231C676C2847C56800AD6395 /* Coordinator */,
 				2311CE5A2839217E00F95335 /* MapViewController */,
@@ -306,6 +309,7 @@
 				231F00FA27E62FF300502AFA /* SceneDelegate.swift in Sources */,
 				231C67722847ED5F00AD6395 /* RegisterViewController.swift in Sources */,
 				231C676B2847B0A600AD6395 /* LoginAndRegisterViewModel.swift in Sources */,
+				230C1332284CFD4C001D033E /* BackgroundViewController.swift in Sources */,
 				231F812E2803572B00104131 /* RealmService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -204,6 +204,34 @@
             </objects>
             <point key="canvasLocation" x="1686.9565217391305" y="68.973214285714278"/>
         </scene>
+        <!--Background View Controller-->
+        <scene sceneID="lJm-xO-wKv">
+            <objects>
+                <viewController storyboardIdentifier="BackgroundViewController" id="y5n-AJ-F9N" customClass="BackgroundViewController" customModule="MovementMonitoring" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6sF-2i-P0C">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Смайл2" translatesAutoresizingMaskIntoConstraints="NO" id="ah9-HK-eA1">
+                                <rect key="frame" x="87" y="328" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="JbL-HX-gSl"/>
+                                    <constraint firstAttribute="height" constant="240" id="RLy-SF-qtm"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="EBJ-3F-5RF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ah9-HK-eA1" firstAttribute="centerX" secondItem="6sF-2i-P0C" secondAttribute="centerX" id="pzZ-ND-lvz"/>
+                            <constraint firstItem="ah9-HK-eA1" firstAttribute="centerY" secondItem="6sF-2i-P0C" secondAttribute="centerY" id="riW-QU-I9t"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6d4-f4-JUV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2466.666666666667" y="68.973214285714278"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="2mY-ES-dXA">
             <objects>
@@ -311,6 +339,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Смайл2" width="150" height="150"/>
         <image name="Снимок экрана" width="638" height="1128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

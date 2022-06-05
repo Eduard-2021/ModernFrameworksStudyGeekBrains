@@ -13,6 +13,14 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loginTextField.autocorrectionType = .no
+        passwordTextField.isSecureTextEntry = true
+    }
+
 
     @IBAction func registerButtonDidTap(_ sender: Any) {
         guard let loginAndRegisterViewModel = loginAndRegisterViewModel,

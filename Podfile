@@ -10,5 +10,7 @@ target 'MovementMonitoring' do
 	pod 'GoogleMaps'
   pod 'RealmSwift'
   pod 'Alamofire'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
 end

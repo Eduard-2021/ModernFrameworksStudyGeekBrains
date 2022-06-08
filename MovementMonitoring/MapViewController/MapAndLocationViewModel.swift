@@ -8,6 +8,8 @@
 import UIKit
 import GoogleMaps
 import CoreLocation
+import RxSwift
+import RxCocoa
 
 protocol MapAndLocationViewModelOutput: AnyObject {
     var locationChanged: (GMSMutablePath, GMSCameraPosition) -> Void { get set }
@@ -24,7 +26,7 @@ class MapAndLocationViewModel: MapAndLocationViewModelOutput {
     var coordinate: CLLocationCoordinate2D?
     var zoom: Float = 13
     var pathCoordinatesRealm = [PathCoordinatesRealm]()
-    var coreLocationViewController: CoreLocationViewController?
+    var locationManagerWithRxSwift: LocationManager?
     
     var routePath: GMSMutablePath?
     
@@ -33,9 +35,8 @@ class MapAndLocationViewModel: MapAndLocationViewModelOutput {
     init (locationChanged: @escaping (GMSMutablePath, GMSCameraPosition) -> Void) {
         self.locationChanged = locationChanged
         self.initAndClearRealm()
-        coreLocationViewController = CoreLocationViewController()
-        coreLocationViewController?.configureLocationManager()
-        coreLocationViewController?.delegate = self
+        locationManagerWithRxSwift = LocationManager.instance
+        configureLocationManagerWithRxSwift()
     }
     
     private func initAndClearRealm(){
@@ -47,14 +48,14 @@ class MapAndLocationViewModel: MapAndLocationViewModelOutput {
 
 extension MapAndLocationViewModel: MapAndLocationViewModelInput {
     func startTrackButtonDidTap() {
-        coreLocationViewController?.locationManager?.startMonitoringSignificantLocationChanges()
+        locationManagerWithRxSwift?.locationManager?.startMonitoringSignificantLocationChanges()
         routePath = GMSMutablePath()
-        coreLocationViewController?.locationManager?.startUpdatingLocation()
+        locationManagerWithRxSwift?.locationManager?.startUpdatingLocation()
     }
     
     func stopTrackButtonDidTap() {
-        coreLocationViewController?.locationManager?.stopMonitoringSignificantLocationChanges()
-        coreLocationViewController?.locationManager?.stopUpdatingLocation()
+        locationManagerWithRxSwift?.locationManager?.stopMonitoringSignificantLocationChanges()
+        locationManagerWithRxSwift?.locationManager?.stopUpdatingLocation()
         var numberOfPointsToDelete = 0
         if let allSaveCoordinates = try? RealmService.load(typeOf: PathCoordinatesRealm.self) {
             numberOfPointsToDelete = allSaveCoordinates.count
@@ -81,8 +82,8 @@ extension MapAndLocationViewModel: MapAndLocationViewModelInput {
     
     
     private func loadAndShowPreviousTrack() -> (GMSMutablePath?, GMSCameraUpdate?) {
-        coreLocationViewController?.locationManager?.stopMonitoringSignificantLocationChanges()
-        coreLocationViewController?.locationManager?.stopUpdatingLocation()
+        locationManagerWithRxSwift?.locationManager?.stopMonitoringSignificantLocationChanges()
+        locationManagerWithRxSwift?.locationManager?.stopUpdatingLocation()
         var commonView: GMSCameraUpdate? = nil
         routePath = GMSMutablePath()
         if let previousSaveCoordinates = try? RealmService.load(typeOf: PathCoordinatesRealm.self) {
@@ -112,16 +113,19 @@ extension MapAndLocationViewModel: MapAndLocationViewModelInput {
     }
     
     
-    func locationManager(location: CLLocation){
-        coordinate = location.coordinate
-        guard let latitude = coordinate?.latitude, let longitude = coordinate?.longitude else {return}
-        let singlePointCoordinates = PathCoordinatesRealm(latitude: latitude, longitude: longitude)
-        pathCoordinatesRealm.append(singlePointCoordinates)
-        
-        // Добавляем новую координату в путь маршрута
-        routePath?.add(location.coordinate)
-        let position = GMSCameraPosition.camera(withTarget: location.coordinate,zoom: zoom)
-        self.locationChanged(routePath!, position)
+    func configureLocationManagerWithRxSwift(){
+        locationManagerWithRxSwift?.lastLocationObservable.subscribe {[weak self] locationRx in
+            guard let location = locationRx.element, let self = self else {return}
+            self.coordinate = location.coordinate
+            guard let latitude = self.coordinate?.latitude, let longitude = self.coordinate?.longitude else {return}
+            let singlePointCoordinates = PathCoordinatesRealm(latitude: latitude, longitude: longitude)
+            self.pathCoordinatesRealm.append(singlePointCoordinates)
+            
+            // Добавляем новую координату в путь маршрута
+            self.routePath?.add(location.coordinate)
+            let position = GMSCameraPosition.camera(withTarget: location.coordinate,zoom: self.zoom)
+            self.locationChanged(self.routePath!, position)
+        }
     }
 }
 

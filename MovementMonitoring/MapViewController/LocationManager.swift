@@ -7,11 +7,23 @@
 
 import UIKit
 import CoreLocation
+import RxSwift
+import RxCocoa
 
-class CoreLocationViewController: UIViewController, CLLocationManagerDelegate {
+class LocationManager: NSObject, CLLocationManagerDelegate {
+    static let instance = LocationManager()
+    
+    private let lastLocation = PublishSubject<CLLocation>()
+    var lastLocationObservable: Observable<CLLocation> {
+        return lastLocation.asObserver()
+    }
     
     var locationManager: CLLocationManager?
-    var delegate: MapAndLocationViewModel?
+    
+    private override init() {
+        super.init()
+        configureLocationManager()
+    }
     
     func configureLocationManager() {
         locationManager = CLLocationManager()
@@ -23,7 +35,7 @@ class CoreLocationViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else {return}
-        delegate?.locationManager(location: location)
+        lastLocation.onNext(location)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error:

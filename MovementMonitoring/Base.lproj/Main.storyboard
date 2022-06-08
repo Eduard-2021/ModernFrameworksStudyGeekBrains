@@ -329,6 +329,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="enterButtonOutlet" destination="vMB-kF-EQf" id="4x9-SZ-XsB"/>
                         <outlet property="loginTextField" destination="yOR-kz-DZP" id="VOp-Lt-WHj"/>
                         <outlet property="passwordTextField" destination="EHF-fO-Q6B" id="axf-qF-kSD"/>
                     </connections>

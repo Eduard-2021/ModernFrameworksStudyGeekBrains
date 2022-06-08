@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class LoginViewController: UIViewController {
     
@@ -13,11 +15,13 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-   
+    @IBOutlet weak var enterButtonOutlet: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loginTextField.autocorrectionType = .no
         passwordTextField.isSecureTextEntry = true
+        configureLoginBindings()
         loginAndRegisterViewModel?.unCorrectLoginOrPassword = {alertController in
             self.present(alertController, animated: true)
         }
@@ -38,5 +42,16 @@ class LoginViewController: UIViewController {
     
     @IBAction func registrationButtonDidTap(_ sender: Any) {
         loginAndRegisterViewModel?.registrationButtonDidTap()
+    }
+    
+    private func configureLoginBindings() {
+        Observable
+            .combineLatest(loginTextField.rx.text, passwordTextField.rx.text)
+            .map { login, password in
+                return !(login ?? "").isEmpty && !(password ?? "").isEmpty
+            }
+            .bind { [weak enterButtonOutlet] inputFilled in
+                enterButtonOutlet?.isEnabled = inputFilled
+            }
     }
 }

@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var appCoordinator: AppCooridanor?
     var mainNavigationController: UINavigationController?
     let navigationController = UINavigationController()
+    let localNotifications = LocalNotifications()
     
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
@@ -36,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return
         }
         window?.rootViewController = backgroundViewController
+        localNotifications.initAndSendNotification()
     }
 
     

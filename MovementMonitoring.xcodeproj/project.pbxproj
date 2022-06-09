@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230099762852628D00A894F0 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230099752852628D00A894F0 /* LocalNotifications.swift */; };
 		230C1332284CFD4C001D033E /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230C1331284CFD4C001D033E /* BackgroundViewController.swift */; };
 		2311CE5C2839235000F95335 /* MapAndLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2311CE5B2839235000F95335 /* MapAndLocationViewModel.swift */; };
 		231C67662847816D00AD6395 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231C67652847816D00AD6395 /* User.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		1825604B4DE6F03D3335DCAF /* Pods-MovementMonitoring.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovementMonitoring.release.xcconfig"; path = "Target Support Files/Pods-MovementMonitoring/Pods-MovementMonitoring.release.xcconfig"; sourceTree = "<group>"; };
+		230099752852628D00A894F0 /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		230C1331284CFD4C001D033E /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
 		2311CE5B2839235000F95335 /* MapAndLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndLocationViewModel.swift; sourceTree = "<group>"; };
 		231C67652847816D00AD6395 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -71,6 +73,15 @@
 				1825604B4DE6F03D3335DCAF /* Pods-MovementMonitoring.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		23009974285261DC00A894F0 /* AdditionalClasses */ = {
+			isa = PBXGroup;
+			children = (
+				230C1331284CFD4C001D033E /* BackgroundViewController.swift */,
+				230099752852628D00A894F0 /* LocalNotifications.swift */,
+			);
+			path = AdditionalClasses;
 			sourceTree = "<group>";
 		};
 		2311CE5A2839217E00F95335 /* MapViewController */ = {
@@ -125,13 +136,13 @@
 			children = (
 				231F00F727E62FF300502AFA /* AppDelegate.swift */,
 				231F00F927E62FF300502AFA /* SceneDelegate.swift */,
-				230C1331284CFD4C001D033E /* BackgroundViewController.swift */,
 				231F00FD27E62FF300502AFA /* Main.storyboard */,
 				231C676C2847C56800AD6395 /* Coordinator */,
 				2311CE5A2839217E00F95335 /* MapViewController */,
 				231C6767284783CC00AD6395 /* LoginAndRegisterViewController */,
 				231F812928032C5300104131 /* Models */,
 				231F812C2803570800104131 /* Realm */,
+				23009974285261DC00A894F0 /* AdditionalClasses */,
 				231F010027E62FF400502AFA /* Assets.xcassets */,
 				231F010227E62FF400502AFA /* LaunchScreen.storyboard */,
 				231F010527E62FF400502AFA /* Info.plist */,
@@ -300,6 +311,7 @@
 				231C67692847841400AD6395 /* LoginViewController.swift in Sources */,
 				2311CE5C2839235000F95335 /* MapAndLocationViewModel.swift in Sources */,
 				231F812B28032CD800104131 /* PathCoordinatesRealm.swift in Sources */,
+				230099762852628D00A894F0 /* LocalNotifications.swift in Sources */,
 				231F00FC27E62FF300502AFA /* MapViewController.swift in Sources */,
 				231F00F827E62FF300502AFA /* AppDelegate.swift in Sources */,
 				231C67662847816D00AD6395 /* User.swift in Sources */,

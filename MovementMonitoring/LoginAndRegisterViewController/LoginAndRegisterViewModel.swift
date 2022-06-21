@@ -34,9 +34,9 @@ class LoginAndRegisterViewModel {
     
     func register(login: String, password: String) {
         
-        if let oldUserTypeResult = try? RealmService.loadAndCheck(typeOf: User.self, login: login) {
+        if  let oldUserTypeResult = try? RealmService.loadAndCheck(typeOf: User.self, login: login),
+            let oldUserTypeUser = oldUserTypeResult.first  {
             let oldUserWithNewPassword = User()
-            guard let oldUserTypeUser = oldUserTypeResult.first else {return}
             oldUserWithNewPassword.login =  oldUserTypeUser.login
             oldUserWithNewPassword.password = password
             try? RealmService.delete(object: oldUserTypeResult)

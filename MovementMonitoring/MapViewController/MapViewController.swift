@@ -15,7 +15,23 @@ class MapViewController: UIViewController {
     var coordinate: CLLocationCoordinate2D?
     var marker: GMSMarker?
     var zoom: Float = 13
-    var isFirstRun = true
+    
+    var markerImage: UIImage?
+    let profileMarkerSize : CGFloat = 40
+    
+    lazy var profileMarkerImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFill
+        iv.layer.cornerRadius = profileMarkerSize*0.8/2
+        iv.layer.masksToBounds = true
+        return iv
+    }()
+    
+    lazy var backgroundMarkerImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFit
+        return iv
+    }()
     
     var route: GMSPolyline?
     
@@ -55,24 +71,41 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        changeTokenRequest()
         showMap()
-        mapAndLocationViewModel = MapAndLocationViewModel(locationChanged: { [weak self] (routePath, position) in
+        mapAndLocationViewModel = MapAndLocationViewModel(locationChanged: { [weak self] (routePath, position, coordinate) in
             guard let self = self else {return}
+            self.coordinate = coordinate
             self.route?.path = routePath
             self.mapView.animate(to: position)
-            if self.isFirstRun {
-                self.isFirstRun = false
-                self.addMarker()
-            }
+            self.addMarker()
         })
+    }
+    
+    
+    func changeTokenRequest(){
+        let alertController = UIAlertController(title: "Хотите ли Вы добавить в маркер карты изображение из коллекции фотографий телефона?",
+                                                message: "",
+                                                preferredStyle: .alert)
+        let buttonYes = UIAlertAction(title: "Да", style: .cancel)
+                                        { _ in self.getImageFromLibrary()}
+        let buttonNo = UIAlertAction(title: "Нет", style: .default)
+                                        { _ in}
+        alertController.addAction(buttonYes)
+        alertController.addAction(buttonNo)
+        present(alertController, animated: true)
+
+    }
+    
+    private func getImageFromLibrary() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true)
     }
 
     private func clearAndInitializationMap(){
-        // Отвязываем от карты старую линию
         route?.map = nil
-        // Заменяем старую линию новой
         route = GMSPolyline()
-        // Добавляем новую линию на карту
         route?.map = mapView
     }
     
@@ -84,9 +117,59 @@ class MapViewController: UIViewController {
     
     func addMarker() {
         guard let coordinate = coordinate else {return}
+        deleteMarker()
         let marker = GMSMarker(position: coordinate)
+        if let markerImage = markerImage {
+            let profileMarkerView = UIView(frame: CGRect(x: 0, y: 0, width: profileMarkerSize, height: profileMarkerSize * 2))
+            backgroundMarkerImageView.image = UIImage(named: "marker")
+            profileMarkerView.addSubview(backgroundMarkerImageView)
+            constrainBackgroundMarkerImageView(superView: profileMarkerView)
+            profileMarkerImageView.image = markerImage
+            backgroundMarkerImageView.addSubview(profileMarkerImageView)
+            constrainProfileMarkerImageView(superView: backgroundMarkerImageView)
+            marker.iconView = profileMarkerView
+        }
         marker.map = mapView
+        self.marker = marker
+    }
+    
+    func constrainBackgroundMarkerImageView(superView: UIView) {
+        backgroundMarkerImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            backgroundMarkerImageView.widthAnchor.constraint(equalTo:  superView.widthAnchor),
+            backgroundMarkerImageView.heightAnchor.constraint(equalTo: superView.heightAnchor),
+            ])
+    }
+    
+    func constrainProfileMarkerImageView(superView: UIView) {
+        profileMarkerImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            profileMarkerImageView.topAnchor.constraint(equalTo: superView.topAnchor, constant: profileMarkerSize/3),
+            profileMarkerImageView.leadingAnchor.constraint(equalTo: superView.leadingAnchor, constant: profileMarkerSize/10),
+            profileMarkerImageView.widthAnchor.constraint(equalToConstant: profileMarkerSize*0.8),
+            profileMarkerImageView.heightAnchor.constraint(equalToConstant: profileMarkerSize*0.8),
+            ])
+    }
+    
+    func deleteMarker() {
+        guard let marker = marker else {return}
+        marker.map = nil
     }
 }
 
 
+extension MapViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {return}
+        markerImage = image
+        if let markerImage = markerImage {
+            mapAndLocationViewModel?.saveImageToDisk(imageName: "ImageForMarker", image: markerImage)
+        }
+        picker.dismiss(animated: true)
+    }
+
+}

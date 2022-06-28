@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 protocol MapAndLocationViewModelOutput: AnyObject {
-    var locationChanged: (GMSMutablePath, GMSCameraPosition) -> Void { get set }
+    var locationChanged: (GMSMutablePath, GMSCameraPosition, CLLocationCoordinate2D) -> Void { get set }
 }
 
 protocol MapAndLocationViewModelInput: AnyObject {
@@ -27,12 +27,13 @@ class MapAndLocationViewModel: MapAndLocationViewModelOutput {
     var zoom: Float = 13
     var pathCoordinatesRealm = [PathCoordinatesRealm]()
     var locationManagerWithRxSwift: LocationManager?
+    var numberOfLocationUpdates = 0
     
     var routePath: GMSMutablePath?
     
-    var locationChanged: (GMSMutablePath, GMSCameraPosition) -> Void
+    var locationChanged: (GMSMutablePath, GMSCameraPosition, CLLocationCoordinate2D) -> Void
     
-    init (locationChanged: @escaping (GMSMutablePath, GMSCameraPosition) -> Void) {
+    init (locationChanged: @escaping (GMSMutablePath, GMSCameraPosition, CLLocationCoordinate2D) -> Void) {
         self.locationChanged = locationChanged
         self.initAndClearRealm()
         locationManagerWithRxSwift = LocationManager.instance
@@ -118,15 +119,53 @@ extension MapAndLocationViewModel: MapAndLocationViewModelInput {
             guard let location = locationRx.element, let self = self else {return}
             self.coordinate = location.coordinate
             guard let latitude = self.coordinate?.latitude, let longitude = self.coordinate?.longitude else {return}
-            let singlePointCoordinates = PathCoordinatesRealm(latitude: latitude, longitude: longitude)
-            self.pathCoordinatesRealm.append(singlePointCoordinates)
-            
-            // Добавляем новую координату в путь маршрута
-            self.routePath?.add(location.coordinate)
-            let position = GMSCameraPosition.camera(withTarget: location.coordinate,zoom: self.zoom)
-            self.locationChanged(self.routePath!, position)
+            // проверка значения переменной numberOfLocationUpdates - это "костыль", который убирает непонятный скачек трекера по экрану при запуске, если перед этим работа програмыы была завершена после нажатия кнопки "Закончить трек".
+            if self.numberOfLocationUpdates == 3 {
+                let singlePointCoordinates = PathCoordinatesRealm(latitude: latitude, longitude: longitude)
+                self.pathCoordinatesRealm.append(singlePointCoordinates)
+                
+                // Добавляем новую координату в путь маршрута
+                self.routePath?.add(location.coordinate)
+                let position = GMSCameraPosition.camera(withTarget: location.coordinate,zoom: self.zoom)
+                guard let routePath = self.routePath else {return}
+                self.locationChanged(routePath, position, location.coordinate)
+            } else {
+                self.numberOfLocationUpdates += 1
+            }
         }
     }
+    
+    
+    //Сохранение в файл изображения для маркера, выбраного пользователем с коллекции фотографий в телефоне
+    
+    func saveImageToDisk(imageName: String, image: UIImage) {
+
+     guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+
+        let fileName = imageName
+        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+        guard let data = image.jpegData(compressionQuality: 1) else { return }
+
+        //Проверяет, существует ли файл, удаляет его, если да
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            do {
+                try FileManager.default.removeItem(atPath: fileURL.path)
+                print("Removed old image")
+            } catch let removeError {
+                print("couldn't remove file at path", removeError)
+            }
+
+        }
+
+        do {
+            try data.write(to: fileURL)
+        } catch let error {
+            print("error saving file with error", error)
+        }
+
+    }
+    
+    
 }
 
 

@@ -7,16 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		230099762852628D00A894F0 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230099752852628D00A894F0 /* LocalNotifications.swift */; };
+		230C1332284CFD4C001D033E /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230C1331284CFD4C001D033E /* BackgroundViewController.swift */; };
+		2311CE5C2839235000F95335 /* MapAndLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2311CE5B2839235000F95335 /* MapAndLocationViewModel.swift */; };
+		231C67662847816D00AD6395 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231C67652847816D00AD6395 /* User.swift */; };
+		231C67692847841400AD6395 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231C67682847841400AD6395 /* LoginViewController.swift */; };
+		231C676B2847B0A600AD6395 /* LoginAndRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231C676A2847B0A600AD6395 /* LoginAndRegisterViewModel.swift */; };
+		231C676E2847C66D00AD6395 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231C676D2847C66D00AD6395 /* AppCoordinator.swift */; };
+		231C67702847C87900AD6395 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231C676F2847C87900AD6395 /* Coordinator.swift */; };
+		231C67722847ED5F00AD6395 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231C67712847ED5F00AD6395 /* RegisterViewController.swift */; };
 		231F00F827E62FF300502AFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F00F727E62FF300502AFA /* AppDelegate.swift */; };
 		231F00FA27E62FF300502AFA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F00F927E62FF300502AFA /* SceneDelegate.swift */; };
 		231F00FC27E62FF300502AFA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F00FB27E62FF300502AFA /* MapViewController.swift */; };
 		231F00FF27E62FF300502AFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 231F00FD27E62FF300502AFA /* Main.storyboard */; };
 		231F010127E62FF400502AFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 231F010027E62FF400502AFA /* Assets.xcassets */; };
 		231F010427E62FF400502AFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 231F010227E62FF400502AFA /* LaunchScreen.storyboard */; };
+		231F812B28032CD800104131 /* PathCoordinatesRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F812A28032CD800104131 /* PathCoordinatesRealm.swift */; };
+		231F812E2803572B00104131 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231F812D2803572B00104131 /* RealmService.swift */; };
+		2338B7C7283C25BD00573E4B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2338B7C6283C25BD00573E4B /* LocationManager.swift */; };
+		4883FB4E47090483EC67F65F /* Pods_MovementMonitoring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E7555D22D80FCC56333609 /* Pods_MovementMonitoring.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1825604B4DE6F03D3335DCAF /* Pods-MovementMonitoring.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovementMonitoring.release.xcconfig"; path = "Target Support Files/Pods-MovementMonitoring/Pods-MovementMonitoring.release.xcconfig"; sourceTree = "<group>"; };
+		230099752852628D00A894F0 /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
+		230C1331284CFD4C001D033E /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
+		2311CE5B2839235000F95335 /* MapAndLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAndLocationViewModel.swift; sourceTree = "<group>"; };
+		231C67652847816D00AD6395 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		231C67682847841400AD6395 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		231C676A2847B0A600AD6395 /* LoginAndRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAndRegisterViewModel.swift; sourceTree = "<group>"; };
+		231C676D2847C66D00AD6395 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		231C676F2847C87900AD6395 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		231C67712847ED5F00AD6395 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		231F00F427E62FF300502AFA /* MovementMonitoring.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovementMonitoring.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		231F00F727E62FF300502AFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		231F00F927E62FF300502AFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -25,7 +47,11 @@
 		231F010027E62FF400502AFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		231F010327E62FF400502AFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		231F010527E62FF400502AFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		231F812A28032CD800104131 /* PathCoordinatesRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathCoordinatesRealm.swift; sourceTree = "<group>"; };
+		231F812D2803572B00104131 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		2338B7C6283C25BD00573E4B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		9EC80B77FD01A843874CE40E /* Pods-MovementMonitoring.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovementMonitoring.debug.xcconfig"; path = "Target Support Files/Pods-MovementMonitoring/Pods-MovementMonitoring.debug.xcconfig"; sourceTree = "<group>"; };
+		D4E7555D22D80FCC56333609 /* Pods_MovementMonitoring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovementMonitoring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4883FB4E47090483EC67F65F /* Pods_MovementMonitoring.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +73,44 @@
 				1825604B4DE6F03D3335DCAF /* Pods-MovementMonitoring.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		23009974285261DC00A894F0 /* AdditionalClasses */ = {
+			isa = PBXGroup;
+			children = (
+				230C1331284CFD4C001D033E /* BackgroundViewController.swift */,
+				230099752852628D00A894F0 /* LocalNotifications.swift */,
+			);
+			path = AdditionalClasses;
+			sourceTree = "<group>";
+		};
+		2311CE5A2839217E00F95335 /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				231F00FB27E62FF300502AFA /* MapViewController.swift */,
+				2311CE5B2839235000F95335 /* MapAndLocationViewModel.swift */,
+				2338B7C6283C25BD00573E4B /* LocationManager.swift */,
+			);
+			path = MapViewController;
+			sourceTree = "<group>";
+		};
+		231C6767284783CC00AD6395 /* LoginAndRegisterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				231C67682847841400AD6395 /* LoginViewController.swift */,
+				231C676A2847B0A600AD6395 /* LoginAndRegisterViewModel.swift */,
+				231C67712847ED5F00AD6395 /* RegisterViewController.swift */,
+			);
+			path = LoginAndRegisterViewController;
+			sourceTree = "<group>";
+		};
+		231C676C2847C56800AD6395 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				231C676D2847C66D00AD6395 /* AppCoordinator.swift */,
+				231C676F2847C87900AD6395 /* Coordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		231F00EB27E62FF300502AFA = {
@@ -71,8 +136,13 @@
 			children = (
 				231F00F727E62FF300502AFA /* AppDelegate.swift */,
 				231F00F927E62FF300502AFA /* SceneDelegate.swift */,
-				231F00FB27E62FF300502AFA /* MapViewController.swift */,
 				231F00FD27E62FF300502AFA /* Main.storyboard */,
+				231C676C2847C56800AD6395 /* Coordinator */,
+				2311CE5A2839217E00F95335 /* MapViewController */,
+				231C6767284783CC00AD6395 /* LoginAndRegisterViewController */,
+				231F812928032C5300104131 /* Models */,
+				231F812C2803570800104131 /* Realm */,
+				23009974285261DC00A894F0 /* AdditionalClasses */,
 				231F010027E62FF400502AFA /* Assets.xcassets */,
 				231F010227E62FF400502AFA /* LaunchScreen.storyboard */,
 				231F010527E62FF400502AFA /* Info.plist */,
@@ -80,9 +150,27 @@
 			path = MovementMonitoring;
 			sourceTree = "<group>";
 		};
+		231F812928032C5300104131 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				231F812A28032CD800104131 /* PathCoordinatesRealm.swift */,
+				231C67652847816D00AD6395 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		231F812C2803570800104131 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				231F812D2803572B00104131 /* RealmService.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		C06CCC9B7E450BD2782B838A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4E7555D22D80FCC56333609 /* Pods_MovementMonitoring.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -99,6 +187,7 @@
 				231F00F127E62FF300502AFA /* Frameworks */,
 				231F00F227E62FF300502AFA /* Resources */,
 				8A9BDBC080F16E86E9C8A73D /* [CP] Copy Pods Resources */,
+				38B65A5EA56704A7E2C345DB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -156,6 +245,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		38B65A5EA56704A7E2C345DB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MovementMonitoring/Pods-MovementMonitoring-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MovementMonitoring/Pods-MovementMonitoring-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MovementMonitoring/Pods-MovementMonitoring-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		880F31B85D692B3174381941 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -202,9 +308,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				231C67692847841400AD6395 /* LoginViewController.swift in Sources */,
+				2311CE5C2839235000F95335 /* MapAndLocationViewModel.swift in Sources */,
+				231F812B28032CD800104131 /* PathCoordinatesRealm.swift in Sources */,
+				230099762852628D00A894F0 /* LocalNotifications.swift in Sources */,
 				231F00FC27E62FF300502AFA /* MapViewController.swift in Sources */,
 				231F00F827E62FF300502AFA /* AppDelegate.swift in Sources */,
+				231C67662847816D00AD6395 /* User.swift in Sources */,
+				231C676E2847C66D00AD6395 /* AppCoordinator.swift in Sources */,
+				2338B7C7283C25BD00573E4B /* LocationManager.swift in Sources */,
+				231C67702847C87900AD6395 /* Coordinator.swift in Sources */,
 				231F00FA27E62FF300502AFA /* SceneDelegate.swift in Sources */,
+				231C67722847ED5F00AD6395 /* RegisterViewController.swift in Sources */,
+				231C676B2847B0A600AD6395 /* LoginAndRegisterViewModel.swift in Sources */,
+				230C1332284CFD4C001D033E /* BackgroundViewController.swift in Sources */,
+				231F812E2803572B00104131 /* RealmService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +475,8 @@
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MovementMonitoring/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -368,6 +488,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = Eduard.MovementMonitoring;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -386,6 +507,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MovementMonitoring/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -397,6 +520,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = Eduard.MovementMonitoring;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
